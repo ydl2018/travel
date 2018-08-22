@@ -4,9 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import fastclick from 'fastclick'
-import './assets/styles/reset.css'
+import 'styles/reset.css'
 // border.css是为了解决移动端1px在高像素环境下变为2px的问题
-import './assets/styles/border.css'
+import 'styles/border.css'
+import 'styles/iconfont.css'
 
 // 解决点击事件被延迟300ms的问题
 fastclick.attach(document.body)
