@@ -1,21 +1,13 @@
 <template>
 <div class="icons">
   <swiper :options="swiperOption">
-    <swiper-slide>
-  <div class="icon" v-for="item of iconList" :key="item.id">
+    <swiper-slide v-for="page in pages" :key="page.id">
+  <div class="icon" v-for="item of page" :key="item.id">
     <div class="icon-img">
       <img :src="item.src" alt="">
     </div>
     <div class="keywords">{{item.text}}</div>
   </div>
-    </swiper-slide>
-    <swiper-slide>
-      <div class="icon" v-for="item of iconListTwo" :key="item.id">
-        <div class="icon-img">
-          <img :src="item.src" alt="">
-        </div>
-        <div class="keywords">{{item.text}}</div>
-      </div>
     </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
@@ -69,9 +61,7 @@ export default {
           id: 8,
           src: 'http://img1.qunarzz.com/piao/fusion/1804/95/8d02011d149bdb02.png',
           text: '汽车票'
-        }
-      ],
-      iconListTwo: [
+        },
         {
           id: 9,
           src: 'http://img1.qunarzz.com/piao/fusion/1803/b1/528a9e80403b8c02.png',
@@ -84,17 +74,33 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    pages () {
+      const pages = []
+      this.iconList.forEach((item, index) => {
+        const page = Math.floor(index / 8)
+        if (!pages[page]) {
+          pages[page] = []
+          pages[page].id = page
+        }
+        pages[page].push(item)
+      })
+      console.log(pages)
+      return pages
+    }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
   @import "~styles/veribales.styl"
+  @import "~styles/handleoverflow.styl"
 .icons
   height: 0
   padding-bottom:50%
   overflow hidden
-  background: #eee
+  background: #fff
   .icon
     width: 25%
     height: 0
@@ -114,12 +120,13 @@ export default {
         margin: 0 auto
         height  100%
     .keywords
-      position: absolute
-      bottom: 0
-      left: 0
-      right: 0
-      height .44rem
-      line-height .44rem
-      text-align: center
-      color $fontSizeColor
+        position: absolute
+        bottom: 0
+        left: 0
+        right: 0
+        height .44rem
+        line-height .44rem
+        text-align: center
+        color $fontSizeColor
+        textOverFlow()
 </style>
