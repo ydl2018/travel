@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="hot-span">周末去哪儿</div>
-    <div class="item border-bottom" v-for="item of  WeekendList" :key="item.id">
+    <div class="item border-bottom" v-for="item of list" :key="item.id">
       <div class="item-img">
         <img  :src="item.src"  alt="" class="img">
       </div>
       <div class="item-info">
         <p class="info-title">{{item.title}}</p>
-        <p class="info-content">{{item.content}}</p>
+        <p class="info-content">{{item.text}}</p>
       </div>
     </div>
   </div>
@@ -16,16 +16,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data: function () {
-    return {
-      WeekendList: [{
-        id: 10,
-        src: 'http://img1.qunarzz.com/sight/source/1505/92/580e9ea4f37a1b.jpg_r_640x214_72112761.jpg',
-        title: '吴川第一大帅比',
-        content: '英俊潇洒，风花雪月，可带动人'
-      }
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>

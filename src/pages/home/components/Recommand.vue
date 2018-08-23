@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="hot-span">热销推荐</div>
-    <div class="item border-bottom" v-for="item of recommandList" :key="item.id">
+    <div class="item border-bottom" v-for="item of list" :key="item.id">
       <img class="item-img" :src="item.src"  alt="" >
       <div class="item-info">
         <p class="info-title">{{item.title}}</p>
-        <p class="info-content">{{item.content}}</p>
+        <p class="info-content">{{item.text}}</p>
         <button class="info-button">了解详情</button>
       </div>
     </div>
@@ -15,28 +15,8 @@
 <script>
 export default {
   name: 'HomeRecommand',
-  data: function () {
-    return {
-      recommandList: [{
-        id: 1,
-        src: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
-        title: '吴川第一大帅比',
-        content: '英俊潇洒，风花雪月，可带动人'
-      },
-      {
-        id: 2,
-        src: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
-        title: '吴川第一大帅比',
-        content: '英俊潇洒，风花雪月，可带动人'
-      },
-      {
-        id: 3,
-        src: 'http://img1.qunarzz.com/sight/p0/1603/3b/3bd311262ee06d8c90.img.jpg_200x200_c118d7da.jpg',
-        title: '吴川第一大帅比',
-        content: '英俊潇洒，风花雪月，可带动人'
-      }
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>
