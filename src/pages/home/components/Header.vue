@@ -15,7 +15,9 @@
     <span class="iconfont">&#xe632;</span>
       输入你想要去的地方
     </div>
+  <router-link :to="{path:'/city'}">
     <div class="header-right">{{this.city}}</div>
+  </router-link>
 </div>
 </template>
 <script>
@@ -34,6 +36,7 @@ export default{
   @import "~styles/veribales.styl"
     .header
       display:flex
+      height: $headerHeight
       line-height:.86rem
       background:$bgColor
       color: #fff
@@ -43,29 +46,30 @@ export default{
         text-align: center
         font-size .4rem
     .header-input
-      flex:1
-      background: #fff
-      height:.64rem
-      line-height :.64rem
-      margin-top:.12rem
-      margin-left: .2rem
-      border-radius .1rem
-      color :#ccc
-      padding-left .3rem
+        flex:1
+        background: #fff
+        height:.64rem
+        line-height :.64rem
+        margin-top:.12rem
+        margin-left: .2rem
+        border-radius .1rem
+        color :#ccc
+        padding-left .3rem
     .header-right
-         width:1.24rem
-         float:right
-         position: relative
-         padding-left :.2rem
+        width:1.24rem
+        float:right
+        position: relative
+        padding-left :.2rem
+        color: #fff
     .header-right::after
-      content:""
-      position: absolute
-      top:.34rem
-      left: .85rem
-      width: 0
-      height: 0
-      border-top:.16rem solid #fff
-      border-bottom:.10rem solid transparent
-      border-left:.16rem solid transparent
-      border-right:.16rem solid transparent
+        content:""
+        position: absolute
+        top:.34rem
+        left: .85rem
+        width: 0
+        height: 0
+        border-top:.16rem solid #fff
+        border-bottom:.10rem solid transparent
+        border-left:.16rem solid transparent
+        border-right:.16rem solid transparent
 </style>
