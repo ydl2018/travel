@@ -17,12 +17,12 @@
             <div class="button" :key="item.id"  v-for="item of hot">{{item.name}}</div>
           </div>
         </div>
-        <div class="area border-topbottom" v-for="(item,key) of cities" :key="key">
+        <div :ref="key" class="area border-topbottom" v-for="(item,key) of cities" :key="key">
         <div class="title">
         {{key}}
         </div>
         <ul class="item-list">
-        <li class="item border-bottom" v-for="city of item" :key="city.id">{{city.name}}</li>
+        <li  class="item border-bottom" v-for="city of item" :key="city.id">{{city.name}}</li>
         </ul>
         </div>
         </div>
@@ -37,8 +37,28 @@ export default {
     hot: Array,
     cities: Object
   },
+  data () {
+    return {
+      nowAbc: ''
+    }
+  },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)
+    this.bus.$on('sonClick', msg => {
+    // 判断是否点击的是同一个字符
+      if (this.nowAbc !== msg) {
+        this.nowAbc = msg
+        // 此处也可以进行监听，但是练习着用watch属性进行监听
+        // this.scroll.scrollToElement(this.$refs[msg][0])
+      }
+    })
+  },
+  watch: {
+    nowAbc () {
+      if (this.nowAbc) {
+        this.scroll.scrollToElement(this.$refs[this.nowAbc][0])
+      }
+    }
   }
 }
 </script>

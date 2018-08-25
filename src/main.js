@@ -11,6 +11,7 @@ import 'styles/iconfont.css'
 import 'swiper/dist/css/swiper.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
+Vue.prototype.bus = new Vue()
 
 // 解决点击事件被延迟300ms的问题
 fastclick.attach(document.body)
