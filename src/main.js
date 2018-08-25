@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import fastclick from 'fastclick'
 import 'styles/reset.css'
+import store from './store'
 // border.css是为了解决移动端1px在高像素环境下变为2px的问题
 import 'styles/border.css'
 import 'styles/iconfont.css'
@@ -21,6 +22,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

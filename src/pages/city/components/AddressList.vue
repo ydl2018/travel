@@ -6,7 +6,7 @@
             当前城市
           </div>
           <div class="button-list">
-            <div class="button">北京</div>
+            <div class="button">{{currentCity}}</div>
           </div>
         </div>
         <div class="area">
@@ -14,15 +14,25 @@
             热门城市
           </div>
           <div class="button-list" >
-            <div class="button" :key="item.id"  v-for="item of hot">{{item.name}}</div>
+            <div class="button"
+                 :key="item.id"
+                 v-for="item of hot"
+                 @click="handleCityClick(item.name)"
+            >{{item.name}}</div>
           </div>
         </div>
-        <div :ref="key" class="area border-topbottom" v-for="(item,key) of cities" :key="key">
+        <div :ref="key" class="area border-topbottom"
+             v-for="(item,key) of cities"
+             :key="key"
+        >
         <div class="title">
         {{key}}
         </div>
         <ul class="item-list">
-        <li  class="item border-bottom" v-for="city of item" :key="city.id">{{city.name}}</li>
+        <li  class="item border-bottom"
+             v-for="city of item"
+             :key="city.id"
+             @click="handleCityClick(city.name)">{{city.name}}</li>
         </ul>
         </div>
         </div>
@@ -31,11 +41,17 @@
 
 <script>
 import BScroll from 'better-scroll'
+import {mapActions, mapState} from 'vuex'
 export default {
   name: 'CityList',
   props: {
     hot: Array,
     cities: Object
+  },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
   },
   data () {
     return {
@@ -48,10 +64,18 @@ export default {
     // 判断是否点击的是同一个字符
       if (this.nowAbc !== msg) {
         this.nowAbc = msg
-        // 此处也可以进行监听，但是练习着用watch属性进行监听
+        // 下面形式也可以进行监听，但是练习着用watch属性进行监听
         // this.scroll.scrollToElement(this.$refs[msg][0])
       }
     })
+  },
+  methods: {
+    handleCityClick (city) {
+    // 派发一个参数city给actions的changeCity,一般没有异步调用不适用该函数
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapActions(['changeCity'])
   },
   watch: {
     nowAbc () {

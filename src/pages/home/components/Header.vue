@@ -16,15 +16,21 @@
       输入你想要去的地方
     </div>
   <router-link :to="{path:'/city'}">
-    <div class="header-right">{{this.city}}</div>
+    <div class="header-right">
+        {{city}}
+      <span class="iconfont">&#xe62d;</span>
+    </div>
   </router-link>
 </div>
 </template>
 <script>
+import {mapState, mapGetters} from 'vuex'
 export default{
   name: 'HomeHeader',
-  props: {
-    city: String
+  computed: {
+    // 将state中的city进行查询，然后同名的方式映射到当前的计算属性'city'中
+    ...mapState(['city']),
+    ...mapGetters(['doubleCity'])
   }
 }
 </script>
@@ -40,12 +46,12 @@ export default{
       line-height:.86rem
       background:$bgColor
       color: #fff
-    .header-left
+      .header-left
         width:.64rem
         float:left
         text-align: center
         font-size .4rem
-    .header-input
+      .header-input
         flex:1
         background: #fff
         height:.64rem
@@ -55,21 +61,11 @@ export default{
         border-radius .1rem
         color :#ccc
         padding-left .3rem
-    .header-right
-        width:1.24rem
+      .header-right
+        min-width:1.04rem
+        padding: 0 .1rem
         float:right
-        position: relative
         padding-left :.2rem
         color: #fff
-    .header-right::after
-        content:""
-        position: absolute
-        top:.34rem
-        left: .85rem
-        width: 0
-        height: 0
-        border-top:.16rem solid #fff
-        border-bottom:.10rem solid transparent
-        border-left:.16rem solid transparent
-        border-right:.16rem solid transparent
+        position: relative
 </style>
