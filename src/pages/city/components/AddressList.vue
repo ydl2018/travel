@@ -6,7 +6,9 @@
             当前城市
           </div>
           <div class="button-list">
-            <div class="button">{{currentCity}}</div>
+            <div class="button"
+             @click="handleCityClick(currentCity)"
+            >{{currentCity}}</div>
           </div>
         </div>
         <div class="area">
@@ -46,7 +48,8 @@ export default {
   name: 'CityList',
   props: {
     hot: Array,
-    cities: Object
+    cities: Object,
+    outCity: String
   },
   computed: {
     ...mapState({

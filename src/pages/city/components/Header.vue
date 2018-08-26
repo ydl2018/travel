@@ -1,7 +1,7 @@
 <template>
 <div class="header">
-  <router-link :to="{path:'./'}">
-    <div class="iconfont return-back">&#xe624;</div>
+  <router-link :to="{path:'/'}">
+    <div class="iconfont return-back">&#xe615;</div>
   </router-link>
 <p class="header-title">
   搜索城市

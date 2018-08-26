@@ -55,7 +55,7 @@ export default {
     this.getHomeInfo()
     this.lastCity = this.city
   },
-  // 只在keep-alive下有效，当页面重新被显示时
+  // 只在keep-alive下有效，当页面重新被显示时会被执行
   activated () {
     if (this.lastCity !== this.city) {
       this.lastCity = this.city

@@ -1,14 +1,20 @@
 <template>
   <div>
     <div class="hot-span">热销推荐</div>
-    <div class="item border-bottom" v-for="item of list" :key="item.id">
+    <router-link
+      class="item border-bottom"
+      v-for="item of list"
+      :key="item.id"
+      tag="div"
+      :to="'/detail/'+ item.id"
+    >
       <img class="item-img" :src="item.src"  alt="" >
       <div class="item-info">
         <p class="info-title">{{item.title}}</p>
         <p class="info-content">{{item.text}}</p>
         <button class="info-button">了解详情</button>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

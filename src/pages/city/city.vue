@@ -2,7 +2,7 @@
   <div>
     <city-header ></city-header>
     <city-search :cities="cities"></city-search>
-    <city-list :hot="hotCities" :cities="cities"></city-list>
+    <city-list :hot="hotCities" :cities="cities" :outCity="outCity"></city-list>
     <city-alphabet :cities="cities"></city-alphabet>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
   },
   data () {
     return {
+      outCity: '',
       cities: {},
       hotCities: []
     }
@@ -36,6 +37,7 @@ export default {
         var data = res.data.data
         this.hotCities = data.hotCities
         this.cities = data.cities
+        this.outCity = data.city
       }
     }
   },

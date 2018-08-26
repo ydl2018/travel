@@ -9,7 +9,7 @@
       最后在模板上引用class
       注意：如果将iconfont.css中的映射删除了，就需要自己到官网复制地址
       -->
-      <span class="iconfont">&#xe624;</span>
+      <span class="iconfont">&#xe615;</span>
     </div>
     <div class="header-input">
     <span class="iconfont">&#xe632;</span>
