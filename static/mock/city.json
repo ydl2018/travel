@@ -1,6 +1,7 @@
 {
 	"ret": true,
 	"data":{
+    "city": "茂名",
 		"hotCities": [{
 			"id": 1,
 			"spell": "beijing",

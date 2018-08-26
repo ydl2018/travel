@@ -34,6 +34,8 @@ export default {
   //注意，.swiper-pagination-bullet-active不是该组件里的样式，无法被渲染到别的组件上去
   .wrapper >>> .swiper-pagination-bullet-active
     background: white
+  .wrapper >>> .swiper-pagination-bullets
+    bottom .48rem
   .wrapper
     width: 100%
     height: 0
